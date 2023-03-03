@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tours || for adventorous people </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+
+<body class="d-flex flex-column vh-100">
+    <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light mb-1">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Visit Nepal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link d-md-none nav-link--header" aria-current="page" href="/">Home</a>
+                    <a class="nav-link nav-link--header nav-link--header" href="/campgrounds">All Locations</a>
+                    <a class="nav-link nav-link--header" href="/campgrounds/new">Add Location</a>
+                </div>
+                <form class="form-inline my-2 ml-2 my-lg-0" action="/campgrounds" method="GET">
+                    <input class="form-control mr-sm-2 navbar-form" id="search--location" type="search" name="search" placeholder="Search.." aria-label="Search">
+                  </form>
+                <div class="navbar-nav authenticate-button ml-auto">
+                    <% if (!currentUser){ %>
+                        <a class="nav-link nav-link--header" type="button" data-bs-toggle="modal" data-bs-target="#signUpModal">Sign
+                            Up</a>
+                        <a class="nav-link nav-link--header" type="button" data-bs-toggle="modal" data-bs-target="#logInModal">Log In</a>
+                        <% } else { %>
+                            <a href="/users/<%= currentUser.username %>" class="nav-link nav-link--header">signed In as <%= currentUser.username %></a>
+                            <a href="/logOut" class="nav-link nav-link--header">Log Out</a>
+                            <% } %>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="modal fade" id="logInModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Log In</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <form action="/login" method="POST" class="validated-form" novalidate>
+                            <div class="row mb-3">
+                                <label for="name" class="col-form-label">username: </label>
+                                <input type="text" name="username" id="name" placeholder="Enter Username"
+                                    class="form-control" required>
+                                <div class="invalid-feedback">Please Enter username</div>
+                            </div>
+                            <div class="row mb-2">
+                                <label for="password" class="col-formlabel">Password: </label>
+                                <input type="password" name="password" id="password" class="form-control" required
+                                    placeholder="Enter Password">
+                                <div class="invalid-feedback">Please provide password</div>
+                            </div>
+                            <hr>
+                            <div class="float-end">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create new Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <form action="/register" method="POST" class="validated-form" novalidate>
+                            <div class="row mb-3">
+                                <label for="name" class="col-form-label">username: </label>
+                                <input type="text" name="username" id="name" placeholder="Enter Username"
+                                    class="form-control" required>
+                                <div class="invalid-feedback">Please Enter username</div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="email" class="col-form-label">email: </label>
+                                <input type="email" name="email" id="email" placeholder="Enter Email"
+                                    class="form-control" required>
+                                <div class="invalid-feedback">Please Enter Email</div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="firstname" class="col-form-label">firstname: </label>
+                                <input type="text" name="firstname" id="firstname" placeholder="Enter firstname"
+                                    class="form-control" required>
+                                <div class="invalid-feedback">Please Enter firstname</div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="lastname" class="col-form-label">lastname: </label>
+                                <input type="text" name="lastname" id="lastname" placeholder="Enter lastname"
+                                    class="form-control" required>
+                                <div class="invalid-feedback">Please Enter lastname</div>
+                            </div>
+                            <div class="row mb-2">
+                                <label for="password" class="col-formlabel">Password: </label>
+                                <input type="password" name="password" id="password" class="form-control"
+                                    placeholder="Enter Password" required>
+                                <div class="invalid-feedback">Please provide password</div>
+                            </div>
+                            <hr>
+                            <div class="float-end">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container margin-top-60">
+        <div class="container-fluid">
+            <% if (errorMessage && errorMessage.length> 0) { %>
+                <div class="alert alert-danger mb-1 alert-dismissible fade show" role="alert">
+                    <%= errorMessage %>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <% } else if ( successMessage && successMessage.length> 0 ) { %>
+                    <div class="alert alert-success mb-1 alert-dismissible fade show" role="alert">
+                        <%= successMessage %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <% } %>
+        </div>
+    </div>

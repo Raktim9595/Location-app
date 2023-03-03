@@ -1,0 +1,84 @@
+<%- include("../partials/header") %>
+
+    <div class="container">
+        <div class="container-fluid">
+            <div class="row mt-1 mb-3">
+                <ol class="col-12 breadcrumb">
+                    <li class="breadcrumb-item"><a href="/" class="text-decoration-none">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/campgrounds" class="text-decoration-none">campgrounds</a></li>
+                    <li class="breadcrumb-item"><a href="/campgrounds/<%= campground._id %>"
+                            class="text-decoration-none">
+                            <%= campground.name %>
+                        </a></li>
+                    <li class="breadcrumb-item active">Edit</li>
+                </ol>
+            </div>
+        </div>
+        <h1 class="text-center">Edit <%= campground.name %>
+        </h1>
+        <div class="form-style">
+            <form action="/campgrounds/<%= campground._id %>?_method=PUT" enctype="multipart/form-data" method="POST"
+                class="validated-form" novalidate>
+                <div class="row mb-3">
+                    <label for="name" class="col-md-3 col-form-label">Name: </label>
+                    <input type="text" name="campground[name]" id="name" value="<%= campground.name %>"
+                        class="form-control col-sm-9 col-12" required>
+                    <div class="invalid-feedback">Please Enter form</div>
+                </div>
+                <div class="row mb-3">
+                    <label for="price" class="col-md-3 col-form-label">Price: </label>
+                    <input type="text" name="campground[price]" id="price" value="<%= campground.price %>"
+                        placeholder="enter price" class="form-control col-sm-9 col-12" required>
+                    <div class="invalid-feedback">Please Enter price</div>
+                </div>
+                <div class="row mb-3">
+                    <label for="location" class="col-md-3 col-form-label">Enter Location: </label>
+                    <input type="text" name="campground[location]" id="location" value="<%= campground.location %>" placeholder="enter campground location"
+                        class="form-control col-sm-9 col-12" required>
+                    <div class="invalid-feedback">Please Enter Location</div>
+                </div>
+                <div class="row mb-3">
+                    <label for="description" class="col-md-3 col-form-label">Description: </label>
+                    <textarea name="campground[description]" id="description" cols="30" rows="10"
+                        class="form-control col-sm-9" required><%= campground.description %></textarea>
+                    <div class="invalid-feedback">Please Enter description</div>
+                </div>
+                <div class="row mb-3">
+                    <label for="image" class="col-md-3 col-form-label">Add More Images: </label>
+                    <!-- <input type="text" name="campground[image]" id="image" value="<%= campground.image %>" class="form-control col-sm-9 col-12" required> -->
+                    <input type="file" name="image" id="image" multiple class="form-control col-sm-9 col-12">
+                    <!-- <div class="invalid-feedback">Please Enter image</div> -->
+                </div>
+                <div class="row mb-3">
+                    <p>
+                        <button class="btn btn-warning" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#deleteImages" aria-expanded="false" aria-controls="deleteImages">
+                            Delete Photos
+                        </button>
+                    </p>
+                    <div class="collapse" id="deleteImages">
+                        <div class="row">
+                            <% campground.images.forEach((img, i)=> { %>
+                                <div class="card col-12 col-sm-6 col-lg-4" id="no-space">
+                                    <img src="<%= img.thumbnail %>" class="edit-photos mb-2" alt="image-<%= i %>">
+                                    <div class="form-check ml-auto mr-3 pb-2">
+                                        <input class="form-check-input" type="checkbox" name="deleteImages[]"
+                                            id="image-<%= i %>" value="<%= img.filename %>">
+                                        <label class="form-check-label" for="image-<%= i %>">
+                                            Delete?
+                                        </label>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <button class="form-control btn-primary" type="submit" style="max-width: 150px;">Submit</button>
+                </div>
+            </form>
+            <a href="/campgrounds"> Go Back</a>
+        </div>
+    </div>
+
+    <%- include("../partials/footer") %>

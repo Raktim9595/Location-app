@@ -1,0 +1,55 @@
+<%- include("./partials/header") %>
+
+<div class="container">
+    <div class="text-center mt-4">
+        <h1 class="site-header mb-4">
+            Different Touring Places all over nepal
+        </h1>
+    </div>
+    <div class="row">
+        <% campgrounds.forEach((campground) => { %>
+            <div class="offset-sm-2 col-sm-8 d-xl-none">
+                <div class="card mb-3" id="no-space">
+                    <div class="caption p-3">
+                        <a href="/campgrounds/<%= campground._id %>" class="text-decoration-none">
+                            <h3><%= campground.name %>:</h3>
+                        </a>
+                    </div>
+                    <img src="<%= campground.images[0].url %>" alt="<%= campground.name %>" class="img-fluid mb-2">
+                    <div class="card-body">
+                        <p class="card-text"><%- campground.description.substring(0,140) %>.......</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="d-none d-xl-block offset-xl-1 col-xl-10">
+                <div class="card mb-3">
+                    <div class="row">
+                        <div class="col-xl-4" id="no space">
+                            <img src="<%= campground.images[0].thumbnail %>" alt="<%= campground.name %>" class="img-fluid img-height-xl">
+                        </div>
+                        <div class="col-xl-8">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="/campgrounds/<%= campground._id %>" class="text-decoration-none">
+                                        <h3><%= campground.name %>:</h3>
+                                    </a>
+                                </h4>
+                                <p class="card-text">
+                                    <p class="card-text"><%- campground.description.substring(0,200) %>....</p>
+                                </p>
+                                <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+<%- include("./partials/footer") %>

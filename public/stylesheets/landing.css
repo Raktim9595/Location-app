@@ -1,0 +1,84 @@
+body {
+  background-color: black;
+}
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 40vh;
+  width: 400px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+h1 {
+  color: white;
+}
+.landing__text {
+  color: white;
+  display: block;
+  font-family: sans-serif;
+  margin-top: -5px;
+  margin-bottom: 8px;
+}
+.slideshow {
+  position: fixed;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.slideshow li {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  opacity: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: imageAnimation 50s linear infinite;
+}
+.slideshow li:nth-child(1) { 
+  background-image: url("../images/Nepal\ map.jpg");
+}
+.slideshow li:nth-child(2) { 
+  background-image: url("../images/Nepal\ 1.jpg");
+  animation-delay: 10s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url("../images/Nepal\ 2.jpg");
+  animation-delay: 20s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url("../images/Nepal\ 3.jpg");
+  animation-delay: 30s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url("../images/Nepal\ 4.jpg");
+  animation-delay: 40s; 
+}
+
+/* WRITING OUR ANIMATIONS */
+@keyframes imageAnimation {
+  0% {
+      opacity: 0;
+      animation-timing-function: ease-in;
+  }
+  10% {
+      opacity: 1;
+      animation-timing-function: ease-out;
+  }
+  20% {
+      opacity: 1;
+  }
+  30% {
+      opacity: 0;
+  }
+}

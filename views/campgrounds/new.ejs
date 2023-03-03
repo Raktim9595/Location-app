@@ -1,0 +1,58 @@
+<%- include("../partials/header") %>
+
+    <div class="container">
+        <div class="container-fluid">
+            <div class="row mt-1 mb-3">
+                <nav aria-label="breacrumb">
+                    <ol class="col-12 breadcrumb">
+                        <li class="breadcrumb-item"><a href="/" class="text-decoration-none">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/campgrounds" class="text-decoration-none">campgrounds</a>
+                        </li>
+                        <li class="breadcrumb-item active" class="text-decoration-none">New</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <h1 class="text-center">Create a new Campground</h1>
+        <div class="form-style">
+            <form action="/campgrounds" method="POST" class="validated-form" enctype="multipart/form-data" novalidate>
+                <div class="row mb-3">
+                    <label for="name" class="col-md-3 col-form-label">Name: </label>
+                    <input type="text" name="campground[name]" id="name" placeholder="Enter Name"
+                        class="form-control col-sm-9 col-12" required>
+                    <div class="invalid-feedback">Please enter name</div>
+                </div>
+                <div class="row mb-3">
+                    <label for="price" class="col-md-3 col-form-label">Price: </label>
+                    <input type="text" name="campground[price]" id="price" placeholder="enter price"
+                        class="form-control col-sm-9 col-12" required>
+                    <div class="invalid-feedback">Please Enter price</div>
+                </div>
+                <div class="row mb-3">
+                    <label for="location" class="col-md-3 col-form-label">Enter Location: </label>
+                    <input type="text" name="campground[location]" id="location" placeholder="enter campground location"
+                        class="form-control col-sm-9 col-12" required>
+                    <div class="invalid-feedback">Please Enter Location</div>
+                </div>
+                <div class="row mb-3">
+                    <label for="image" class="form-label col-md-3 col-12">Select Images: </label>
+                    <input type="file" type="file" name="image" id="image" class="form-control col-sm-9 col-12"
+                        multiple>
+                    <!-- <input type="text" name="campground[image]" id="image" placeholder="Enter Image" class="form-control col-sm-9 col-12" required>
+                <div class="invalid-feedback">Please Enter image</div> -->
+                </div>
+                <div class="row mb-3">
+                    <label for="description" class="col-md-3 col-form-label">Description: </label>
+                    <textarea name="campground[description]" id="description" cols="30" rows="10"
+                        placeholder="Description" class="form-control col-sm-9" required></textarea>
+                    <div class="invalid-feedback">Please enter some description</div>
+                </div>
+                <div class="row mb-3">
+                    <button class="form-control btn-primary" type="submit" style="max-width: 150px;">Submit</button>
+                </div>
+            </form>
+            <a href="/campgrounds"> Go Back</a>
+        </div>
+    </div>
+
+    <%- include("../partials/footer") %>

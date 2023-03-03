@@ -1,0 +1,27 @@
+<%- include("../partials/header") %>
+
+    <div class="container">
+        <div class="form-style">
+            <form action="/campgrounds/<%= campgroundId %>/reviews/<%= foundReview._id %>?_method=PUT" method="POST">
+                <div class="row form-group">
+                    <label for="rating" class="col-md-2 col-form-label">Rating: </label>
+                    <div class="col-md-10">
+                        <input type="number" min="1" max="5" value="<%= foundReview.rating %>" class="form-control col-md-10" name="review[rating]" id="rating">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="body" class="col-md-2 col-form-label">Body: </label>
+                    <div class="col-md-10">
+                        <input type="text" value="<%= foundReview.body %>" class="form-control col-md-10" name="review[body]" id="body">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="offset-md-2">
+                        <button class="form-control btn-primary" type="submit" style="max-width: 150px;">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<%- include("../partials/footer") %>

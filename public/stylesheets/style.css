@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.img-thumbnail .caption-full {
+    padding: 10px;
+}
+
+#no-space {
+    padding: 0;
+}
+
+#no-space-thumbnail {
+    padding: 0;
+}
+
+.img-thumbnail img {
+    width: 100%;
+}
+
+.form-style {
+    width: 56%;
+    margin: 50px auto;
+}
+
+.btn-group-style {
+    padding: 0 0 8px 15px;
+}
+
+.margin-top-60 {
+    margin-top: 60px;
+}
+
+.img-height-xl {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.edit-photos {
+    width: 100%;
+    height: 151px;
+    object-fit: cover;
+}
+
+.style-map {
+    height: 300px;
+    width: 100%;
+}
+
+#map {
+    width: 100%;
+    height: 300px;
+}
+.navbar-form {
+    border-radius: 0.65rem;
+}
+
+.site-header {
+    text-transform: uppercase;
+    font-size: 35px;
+    display: inline-block;
+    background-image: linear-gradient(to right, #57a0d3, #000080);
+    -webkit-background-clip: text;
+    background-clip: text;  
+    color: transparent;
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
+}
+
+.site-header:hover {
+    transform: scale(1.08);
+    text-shadow: 0 15px 18px rgba(0,0,0,0.2);
+}
+
+.review-button {
+    width: 160px;
+}
+
+.edit-icons {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+
+.edit-icons img {
+    font-size: 16px;
+    fill: gray;
+}
+
+.review-dropdown::after {
+    content: none !important;
+}
+
+.delete-review-button {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: inline-block;
+    text-align: start;
+}
+
+.user__avatar {
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+    margin: auto;
+}
+.user__info-line {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    column-gap: 40px;
+}
+.user__username {
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+    margin-top: 15px;
+    text-align: center;
+}
+.info__sub-content {
+    margin: 10px;
+    padding: 5px 10px 5px 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+
+.sub-title {
+    color: #000;
+    font-weight: 500;
+    font-size: 18px;
+}
+.user__campground-img {
+    min-height: 150px;
+    object-fit: cover;
+}
+.user__card-container {
+    height: 150px;
+    margin-top: 20px;
+}
+.sub-name {
+    color: gray;
+    font-size: 18px;
+    font-weight: normal;
+    margin-left: 50px;
+}
+
+.user__avatar img {
+    display: inline-block;
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+}
+
+@media only screen and (min-width: 1200px) {
+    .img-thumbnail img {
+        height: 418px;
+        object-fit: cover;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .edit-photos {
+        height: 125px;
+    }
+
+    .img-thumbnail img {
+        height: 330px;
+        object-fit: cover;
+    }
+
+    #map {
+        width: 100%;
+        height: 250px;
+    }
+
+    .style-map {
+        height: 250px;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .img-thumbnail img {
+        height: 255px;
+        object-fit: cover;
+    }
+
+    #map {
+        width: 100%;
+        height: 200px;
+    }
+
+    .style-map {
+        height: 200px;
+        width: 100%;
+    }
+
+    .site-header {
+        font-size: 30px;
+    }
+    .nav-link--header {
+        font-size: 14px;
+    }
+    #search--location {
+        display: inline-block;
+        width: 180px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .edit-photos {
+        height: 151px;
+    }
+
+    .form-style {
+        width: 100%;
+    }
+
+    .img-thumbnail img {
+        height: 300px;
+        object-fit: cover;
+    }
+
+    #map {
+        width: 100%;
+        height: 300px;
+    }
+
+    .style-map {
+        height: 300px;
+        width: 100%;
+    }
+
+    .site-header {
+        font-size: 23px;
+    }
+    #search--location {
+        width: 300px;
+        transform: translateX(-10px);
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    .form-style {
+        width: 85%;
+    }
+
+    .edit-photos {
+        height: 250px;
+    }
+}
+
+@media only screen and (max-width: 455px) {
+    .img-thumbnail img {
+        height: 255px;
+        object-fit: cover;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .edit-photos {
+        height: 168px;
+    }
+}
